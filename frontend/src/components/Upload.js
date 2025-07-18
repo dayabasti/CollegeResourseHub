@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_BASE_URL;
+const API = process.env.REACT_APP_API_BASE_URL;
 
 function Upload() {
   const navigate = useNavigate();

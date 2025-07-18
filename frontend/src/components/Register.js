@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const API = import.meta.env.VITE_API_BASE_URL;
+const API = process.env.REACT_APP_API_BASE_URL;
 
 function Register() {
   const [form, setForm] = useState({

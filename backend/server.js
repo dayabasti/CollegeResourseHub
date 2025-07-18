@@ -9,7 +9,7 @@ const resourceRoutes = require("./routes/resourceRoutes");
 
 const app = express();
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://collegeresourcehub.netlify.app",
   credentials: true
 }));
 

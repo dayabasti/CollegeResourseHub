@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_BASE_URL;
+const API = process.env.REACT_APP_API_BASE_URL;
 
 function Notes({ role }) {
   const [resources, setResources] = useState([]);
