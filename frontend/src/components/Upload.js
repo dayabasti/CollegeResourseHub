@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 function Upload() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function Upload() {
     formData.append("section", section);
 
     try {
-      await axios.post(`${API}/api/resources/upload`, formData, {
+      await axios.post(`${API_BASE_URL}/api/resources/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
