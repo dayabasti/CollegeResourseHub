@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 function Interview({ role }) {
   const [resources, setResources] = useState([]);
@@ -18,7 +19,7 @@ function Interview({ role }) {
 
   useEffect(() => {
     axios
-      .get(`${API}/api/resources/section/interview`)
+      .get(`${API_BASE_URL}/api/resources/section/interview`)
       .then((res) => {
         const sorted = sortResources(res.data, sortOption);
         setResources(res.data);
@@ -55,7 +56,7 @@ function Interview({ role }) {
     if (!window.confirm("Are you sure you want to delete this file?")) return;
 
     try {
-      await axios.delete(`${API}/api/resources/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/resources/${id}`);
       const updated = resources.filter((res) => res._id !== id);
       setResources(updated);
       setFiltered(sortResources(updated, sortOption));
@@ -68,8 +69,8 @@ function Interview({ role }) {
 
   const handleView = async (id) => {
     try {
-      await axios.post(`${API}/api/resources/view/${id}`);
-      const res = await axios.get(`${API}/api/resources/section/interview`);
+      await axios.post(`${API_BASE_URL}/api/resources/view/${id}`);
+      const res = await axios.get(`${API_BASE_URL}/api/resources/section/interview`);
       setResources(res.data);
       setFiltered(sortResources(res.data, sortOption));
     } catch (err) {
@@ -79,8 +80,8 @@ function Interview({ role }) {
 
   const handleRate = async (id, rating) => {
     try {
-      await axios.post(`${API}/api/resources/${id}/rate`, { rating });
-      const updated = await axios.get(`${API}/api/resources/section/interview`);
+      await axios.post(`${API_BASE_URL}/api/resources/${id}/rate`, { rating });
+      const updated = await axios.get(`${API_BASE_URL}/api/resources/section/interview`);
       setResources(updated.data);
       setFiltered(sortResources(updated.data, sortOption));
       alert("⭐️ Rated successfully!");
@@ -117,7 +118,7 @@ function Interview({ role }) {
             <div className="flex justify-center items-center h-16">
               {getFileType(res.file) === "image" ? (
                 <img
-                  src={`${API}/uploads/${res.file}`}
+                  src={`${API_BASE_URL}/uploads/${res.file}`}
                   alt="Thumbnail"
                   className="h-full object-contain rounded"
                 />
@@ -129,7 +130,7 @@ function Interview({ role }) {
             </div>
 
             <a
-              href={`${API}/uploads/${res.file}`}
+              href={`${API_BASE_URL}/uploads/${res.file}`}
               target="_blank"
               rel="noreferrer"
               onClick={() => handleView(res._id)}

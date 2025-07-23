@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const API = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 function Register() {
   const [form, setForm] = useState({
@@ -22,7 +23,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API}/api/auth/register`, form);
+      const res = await axios.post(`${API_BASE_URL}/api/auth/register`, form);
       alert("✅ " + res.data.message);
       navigate("/login");
     } catch (err) {
