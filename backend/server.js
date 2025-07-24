@@ -9,14 +9,15 @@ const resourceRoutes = require("./routes/resourceRoutes");
 
 const app = express();
 app.use(cors({
-  origin: "https://collegeresourcehub.netlify.app",
+  origin: "https://collegefrontendhub.onrender.com",
   credentials: true
 }));
+
 
 const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware
-app.use(cors());
+
 app.use(express.json());
 
 // ✅ Serve static files from /uploads folder
