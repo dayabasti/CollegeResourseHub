@@ -9,7 +9,10 @@ const resourceRoutes = require("./routes/resourceRoutes");
 
 const app = express();
 app.use(cors({
-  origin: "https://collegefrontendhub.onrender.com",
+  origin: [
+    "https://collegeresoursehub-1.onrender.com",    // Old Render frontend
+    "https://collegeresourcehub.netlify.app/"  // <-- ADD YOUR NETLIFY URL HERE
+  ],
   credentials: true
 }));
 
